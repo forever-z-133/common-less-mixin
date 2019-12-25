@@ -1,0 +1,110 @@
+@import './position.less';
+
+/* 重置 a input 等的样式 */
+.reset() {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  text-decoration: none;
+}
+
+/* 清除 ul 样式 */
+.normal-list() {
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+/* 清楚浮动 */
+.clearfix() {
+  &::after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+}
+
+/* 搞个方盒子 */
+.rect-box(@n: 100px) {
+  width: @n;
+  height: @n;
+  display: block;
+}
+
+/* 禁用 */
+.disabled(@grey: false) {
+  pointer-events: none;
+  user-select: none;
+}
+.disabled(@grey) when (@grey = true) {
+  filter: grayscale(1);
+}
+
+/* 等比例盒子，两套方案是同样的效果，但 imgRatio 会让子级定位 */
+.__ratioBefore(@ratio: 1) {
+  &::before {
+    content: '';
+    float: left;
+    padding-top: @ratio * 100%;
+  }
+}
+.ratio(@ratio: 1) {
+  position: relative;
+  .__ratioBefore(@ratio);
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+.imgRatio(@ratio: 1, @fit: cover) {
+  position: relative;
+  .__ratioBefore(@ratio);
+  & > * {
+    .fit-cover(@fit);
+  }
+}
+
+/* 有内容，但不影响布局 */
+.seo-only() {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
+  width: 1px;
+}
+
+.others-build() {
+  .reset {
+    .reset();
+  }
+  .normal-list {
+    .normal-list();
+  }
+  .clearfix {
+    .clearfix();
+  }
+  .rect-box {
+    .rect-box();
+  }
+  .disabled {
+    .disabled();
+    &.grey {
+      .disabled(true);
+    }
+  }
+  .ratio {
+    .ratio();
+  }
+  .imgRatio {
+    .imgRatio();
+  }
+  .seo-only {
+    .seo-only();
+  }
+}

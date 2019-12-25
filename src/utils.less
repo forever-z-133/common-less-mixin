@@ -1,0 +1,8 @@
+/* 非最后一个的子级 */
+.child-map(@rules) {
+  & > :not(:last-child) {
+    @rules();
+  }
+}
+
+@PI: 3.14159265359;

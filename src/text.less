@@ -1,0 +1,72 @@
+/* ---------- 文本超出省略 */
+.textOverflow() {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.textOverflow(@line) when (@line = 1) {
+  .textOverflow();
+}
+.textOverflow(@line) when (@line > 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}
+
+.text-left() {
+  text-align: left;
+}
+.text-right() {
+  text-align: left;
+}
+.text-center() {
+  text-align: left;
+}
+.text-justify() {
+  text-align: justify;
+}
+.text-last-justify(@height: 1.4em) {
+  text-align-last: justify;
+}
+/* text-last-justify 的兼容方案 */
+// .text-last-justify($height: 1.4em) {
+//   text-align: justify;
+//   height: $height; /* 需要定高，不然会有诡异的空隙 */
+//   line-height: $height;
+//   &::after {
+//     content: '';
+//     width: 100%;
+//     height: 0;
+//     display: inline-block;
+//   }
+// }
+
+.text-build() {
+  .textOverflow {
+    .textOverflow(1);
+  }
+  .textOverflow2 {
+    .textOverflow(2);
+  }
+  .textOverflow3 {
+    .textOverflow(3);
+  }
+  .textOverflow4 {
+    .textOverflow(4);
+  }
+  .text-left {
+    .text-left();
+  }
+  .text-right {
+    .text-right();
+  }
+  .text-center {
+    .text-center();
+  }
+  .text-last-justify {
+    .text-last-justify();
+  }
+}

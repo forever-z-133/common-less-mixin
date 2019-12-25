@@ -1,0 +1,70 @@
+@import './others.less';
+
+/* inline-block 列表 */
+.inblock-row() {
+  letter-spacing: -1em;
+  & > * {
+    display: inline-block;
+    letter-spacing: 0;
+  }
+}
+
+/* float 列表 */
+.float-row() {
+  .clearfix();
+  & > * {
+    float: left;
+  }
+}
+
+/* 滚动容器 */
+.scroller() {
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.scroller(@dir) when (@dir = y) {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.scroller(@dir) when (@dir = x) {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+.scroller-x() {
+  .scroller(x);
+}
+.scroller-y() {
+  .scroller(y);
+}
+
+/* layout 编译 */
+.layout-build() {
+  .block {
+    display: block;
+  }
+  .inline {
+    display: inline;
+  }
+  .inblock {
+    display: inline-block;
+  }
+
+  .inblock-row {
+    .inblock-row();
+  }
+  .float-row {
+    .float-row();
+  }
+
+  .scroller {
+    .scroller();
+  }
+  .scroller-y {
+    .scroller-y();
+  }
+  .scroller-x {
+    .scroller-x();
+  }
+}

@@ -1,0 +1,51 @@
+@import './var.less';
+
+/* 两边间隙 */
+.margin(@n: @row-gap) {
+  margin: @n;
+}
+.margin-row(@n: @row-gap) {
+  margin-left: @n;
+  margin-right: @n;
+}
+.margin-col(@n: @row-gap) {
+  margin-top: @n;
+  margin-bottom: @n;
+}
+
+/* 两边间隙 */
+.padding(@n: @row-gap) {
+  padding: @n;
+}
+.padding-row(@n: @row-gap) {
+  padding-left: @n;
+  padding-right: @n;
+}
+.padding-col(@n: @row-gap) {
+  padding-top: @n;
+  padding-bottom: @n;
+}
+
+/* 其他间隙 */
+.margin-center() {
+  .margin-row(auto);
+}
+
+/* 子级间隙 */
+.child-gap-right(@n: @child-gap) {
+  & > :not(:last-child) {
+    margin-right: @n;
+  }
+}
+.child-gap-bottom(@n: @child-gap) {
+  & > :not(:last-child) {
+    margin-bottom: @n;
+  }
+}
+
+/* 导出结果 */
+.gap-build() {
+  .margin-center {
+    .margin-center();
+  }
+}

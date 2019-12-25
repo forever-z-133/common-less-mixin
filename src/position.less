@@ -1,0 +1,64 @@
+/* 定位 */
+.cover() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.fit-cover(@fit: cover) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: @fit;
+}
+.pos-center() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.pos-bottom() {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+.pos-top() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.position-build() {
+  .relative {
+    position: relative;
+  }
+  .absolute {
+    position: absolute;
+  }
+  .fixed {
+    position: fixed;
+  }
+  .sticky {
+    position: sticky;
+  }
+  .cover {
+    .cover();
+  }
+  .fit-cover {
+    .fit-cover();
+  }
+  .pos-center {
+    .pos-center();
+  }
+  .pos-top {
+    .pos-top();
+  }
+  .pos-bottom {
+    .pos-bottom();
+  }
+}

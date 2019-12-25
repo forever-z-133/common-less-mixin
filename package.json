@@ -1,24 +1,24 @@
 {
-  "name": "common-scss-mixin",
+  "name": "common-less-mixin",
   "version": "1.0.1",
-  "description": "常见而公用的 scss 的 mixin 方法",
-  "main": "index.scss",
+  "description": "常见而公用的 less 的 mixin 方法",
+  "main": "index.less",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/forever-z-133/common-scss-mixin.git"
+    "url": "git+https://github.com/forever-z-133/common-less-mixin.git"
   },
   "keywords": [
-    "scss",
+    "less",
     "mixin",
-    "scss-mixin",
-    "common-scss",
+    "less-mixin",
+    "common-less",
     "common-css"
   ],
   "author": "forever-z-133",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/forever-z-133/common-scss-mixin/issues"
+    "url": "https://github.com/forever-z-133/common-less-mixin/issues"
   },
-  "homepage": "https://github.com/forever-z-133/common-scss-mixin"
+  "homepage": "https://github.com/forever-z-133/common-less-mixin"
 }

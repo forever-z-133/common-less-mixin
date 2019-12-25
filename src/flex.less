@@ -1,0 +1,153 @@
+/* 横向 flex */
+.flex-row-child(@child: ~'.grow') {
+  & > @{child} {
+    flex-grow: 1;
+    overflow: hidden;
+  }
+  & > :not(@{child}) {
+    flex-shrink: 0;
+  }
+}
+.flex-row-normal() {
+  display: flex;
+  align-items: center;
+}
+.flex-row(@child: ~'.grow') {
+  .flex-row-normal();
+  .flex-row-child(@child);
+}
+.flex-row-top() {
+  align-items: flex-start;
+}
+.flex-row-middle() {
+  align-items: center;
+}
+.flex-row-bottom() {
+  align-items: flex-end;
+}
+.flex-row-stretch() {
+  align-items: stretch;
+}
+.flex-row-left() {
+  justify-content: flex-start;
+}
+.flex-row-center() {
+  justify-content: center;
+}
+.flex-row-right() {
+  justify-content: flex-end;
+}
+.flex-row-space() {
+  justify-content: space-between;
+}
+.flex-row-wrap() {
+  flex-wrap: wrap;
+}
+
+/* 竖向 flex */
+.flex-col-child(@child: ~'.grow') {
+  & > @{child} {
+    flex-grow: 1;
+  }
+  & > :not(@{child}) {
+    flex-shrink: 0;
+  }
+}
+.flex-col-normal() {
+  display: flex;
+  flex-direction: column;
+}
+.flex-col(@child: ~'.grow') {
+  .flex-col-normal();
+  .flex-col-child(@child);
+}
+.flex-col-top() {
+  justify-content: flex-start;
+}
+.flex-col-middle() {
+  justify-content: center;
+}
+.flex-col-bottom() {
+  justify-content: flex-end;
+}
+.flex-col-space() {
+  justify-content: space-between;
+}
+.flex-col-left() {
+  align-items: flex-start;
+}
+.flex-col-center() {
+  align-items: center;
+}
+.flex-col-right() {
+  align-items: flex-end;
+}
+
+/* flex 居中 */
+.flex-center() {
+  .flex-row();
+  .flex-row-center();
+}
+
+/* flex 编译 */
+.flex-build() {
+  .flex-row {
+    .flex-row();
+    &.t {
+      .flex-row-top();
+    }
+    &.m {
+      .flex-row-middle();
+    }
+    &.b {
+      .flex-row-bottom();
+    }
+    &.st {
+      .flex-row-stretch();
+    }
+    &.l {
+      .flex-row-left();
+    }
+    &.c {
+      .flex-row-center();
+    }
+    &.r {
+      .flex-row-right();
+    }
+    &.s {
+      .flex-row-space();
+    }
+    &.w {
+      .flex-row-wrap();
+    }
+  }
+
+  .flex-col {
+    .flex-col();
+    &.t {
+      .flex-col-top();
+    }
+    &.m {
+      .flex-col-middle();
+    }
+    &.b {
+      .flex-col-bottom();
+    }
+    &.s {
+      .flex-col-space();
+    }
+    &.l {
+      .flex-col-left();
+    }
+    &.c {
+      .flex-col-center();
+    }
+    &.r {
+      .flex-col-right();
+    }
+  }
+
+  .flex-center {
+    .flex-center();
+  }
+}

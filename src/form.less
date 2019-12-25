@@ -1,0 +1,17 @@
+/* 自定义上传按钮，必须用 label 包裹并带上此类 */
+.input-file() {
+  position: relative;
+  vertical-align: middle;
+  cursor: pointer;
+  & > [type='file'] {
+    position: absolute;
+    left: -999em;
+  }
+}
+
+/* form 编译 */
+.form-build() {
+  label.input-file {
+    .input-file();
+  }
+}
