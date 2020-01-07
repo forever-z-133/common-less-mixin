@@ -1,13 +1,13 @@
 /* ---------- 文本超出省略 */
-.textOverflow() {
+.text-overflow() {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
-.textOverflow(@line) when (@line = 1) {
-  .textOverflow();
+.text-overflow(@line) when (@line = 1) {
+  .text-overflow();
 }
-.textOverflow(@line) when (@line > 1) {
+.text-overflow(@line) when (@line > 1) {
   overflow: hidden;
   text-overflow: ellipsis;
   word-break: break-all;
@@ -24,9 +24,6 @@
 }
 .text-center() {
   text-align: left;
-}
-.text-justify() {
-  text-align: justify;
 }
 .text-last-justify(@height: 1.4em) {
   text-align-last: justify;
@@ -45,17 +42,20 @@
 // }
 
 .text-build() {
-  .textOverflow {
-    .textOverflow(1);
+  .text-overflow {
+    .text-overflow(1);
   }
-  .textOverflow2 {
-    .textOverflow(2);
+  .text-overflow-1 {
+    .text-overflow(1);
   }
-  .textOverflow3 {
-    .textOverflow(3);
+  .text-overflow-2 {
+    .text-overflow(2);
   }
-  .textOverflow4 {
-    .textOverflow(4);
+  .text-overflow-3 {
+    .text-overflow(3);
+  }
+  .text-overflow-4 {
+    .text-overflow(4);
   }
   .text-left {
     .text-left();

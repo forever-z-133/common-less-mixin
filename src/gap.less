@@ -45,6 +45,40 @@
 
 /* 导出结果 */
 .gap-build() {
+  .margin-dir-loop(@dir:right, @n, @i:1) when (@i <= @n) {
+    @gap: @i * 5;
+    .margin-@{dir}-@{gap} {
+      margin-@{dir}: @gap * @px;
+    }
+    .margin-dir-loop(@dir, @n, (@i + 1));
+  }
+  .margin-dir-loop(left, 10);
+  .margin-dir-loop(right, 10);
+  .margin-dir-loop(top, 10);
+  .margin-dir-loop(bottom, 10);
+
+  .padding-dir-loop(@dir:right, @n, @i:1) when (@i <= @n) {
+    @gap: @i * 5;
+    .padding-@{dir}-@{gap} {
+      padding-@{dir}: @gap * @px;
+    }
+    .padding-dir-loop(@dir, @n, (@i + 1));
+  }
+  .padding-dir-loop(left, 10);
+  .padding-dir-loop(right, 10);
+  .padding-dir-loop(top, 10);
+  .padding-dir-loop(bottom, 10);
+
+  .child-gap-loop(@dir: right, @n, @i: 1) when (@i <= @n) {
+    @gap: @i * 5;
+    .gap-@{dir}-@{gap} > :not(:last-of-type) {
+      margin-@{dir}: @gap * @px;
+    }
+    .child-gap-loop(@dir, @n, (@i + 1));
+  }
+  .child-gap-loop(right, 10);
+  .child-gap-loop(bottom, 10);
+
   .margin-center {
     .margin-center();
   }

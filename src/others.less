@@ -6,7 +6,12 @@
   color: inherit;
   background: none;
   border: none;
+  padding:0 0;
   text-decoration: none;
+  // 针对小程序按钮加个处理
+  &::after {
+    display: none;
+  }
 }
 
 /* 清除 ul 样式 */
@@ -27,7 +32,7 @@
 }
 
 /* 搞个方盒子 */
-.rect-box(@n: 100px) {
+.rect-box(@n: 1em) {
   width: @n;
   height: @n;
   display: block;
@@ -42,7 +47,7 @@
   filter: grayscale(1);
 }
 
-/* 等比例盒子，两套方案是同样的效果，但 imgRatio 会让子级定位 */
+/* 等比例盒子，两套方案是同样的效果，但 img-ratio 会让子级定位 */
 .__ratioBefore(@ratio: 1) {
   &::before {
     content: '';
@@ -59,7 +64,7 @@
     clear: both;
   }
 }
-.imgRatio(@ratio: 1, @fit: cover) {
+.image-ratio(@ratio: 1, @fit: cover) {
   position: relative;
   .__ratioBefore(@ratio);
   & > * {
@@ -77,6 +82,13 @@
   padding: 0;
   position: absolute !important;
   width: 1px;
+}
+
+/* 隐藏但保持渲染，适用于 canvas 等 */
+/* 但需注意该隐藏元素的高度，父级最好有 overflow */
+.pos-hide() {
+  position: absolute;
+  left: -9999em;
 }
 
 .others-build() {
@@ -101,10 +113,13 @@
   .ratio {
     .ratio();
   }
-  .imgRatio {
-    .imgRatio();
+  .image-ratio {
+    .image-ratio();
   }
   .seo-only {
     .seo-only();
+  }
+  .pos-hide {
+    .pos-hide();
   }
 }

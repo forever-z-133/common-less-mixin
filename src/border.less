@@ -5,20 +5,20 @@
   border-@{dir}: @width solid @color;
   /* 未来可能会加入毛细线方案吧 */
 }
-.border(@color: @border-color) {
-  border: @border-width solid @color;
+.border(@color: @border-color, @width: @border-width) {
+  border: @width solid @color;
 }
-.border-top(@color: @border-color) {
-  .borderDir(top, @color);
+.border-top(@color: @border-color, @width: @border-width) {
+  .borderDir(top, @width, @color);
 }
-.border-bottom(@color: @border-color) {
-  .borderDir(bottom, @color);
+.border-bottom(@color: @border-color, @width: @border-width) {
+  .borderDir(bottom, @width, @color);
 }
-.border-left(@color: @border-color) {
-  .borderDir(left, @color);
+.border-left(@color: @border-color, @width: @border-width) {
+  .borderDir(left, @width, @color);
 }
-.border-right(@color: @border-color) {
-  .borderDir(right, @color);
+.border-right(@color: @border-color, @width: @border-width) {
+  .borderDir(right, @width, @color);
 }
 
 /* 圆角 */
@@ -35,20 +35,20 @@
 
 /* border 编译 */
 .border-build() {
-  .border {
-    .border();
-  }
-  .border-top {
-    .border-top();
-  }
   .border-left {
     .border-left();
   }
   .border-right {
     .border-right();
   }
+  .border-top {
+    .border-top();
+  }
   .border-bottom {
     .border-bottom();
+  }
+  .border {
+    .border();
   }
   .radius {
     .radius();

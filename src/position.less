@@ -1,6 +1,6 @@
 /* 定位 */
-.cover() {
-  position: absolute;
+.cover(@type: absolute) {
+  position: @type;
   top: 0;
   left: 0;
   right: 0;
@@ -14,23 +14,35 @@
   height: 100%;
   object-fit: @fit;
 }
-.pos-center() {
-  position: absolute;
+.pos-center(@type: absolute) {
+  position: @type;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.pos-bottom() {
-  position: absolute;
+.pos-bottom(@type: absolute) {
+  position: @type;
   left: 0;
   right: 0;
   bottom: 0;
 }
-.pos-top() {
-  position: absolute;
+.pos-top(@type: absolute) {
+  position: @type;
   top: 0;
   left: 0;
   right: 0;
+}
+.pos-left(@type: absolute) {
+  position: @type;
+  top: 0;
+  left: 0;
+  bottom: 0;
+}
+.pos-right(@type: absolute) {
+  position: @type;
+  top: 0;
+  right: 0;
+  bottom: 0;
 }
 
 .position-build() {
@@ -60,5 +72,11 @@
   }
   .pos-bottom {
     .pos-bottom();
+  }
+  .pos-left {
+    .pos-left();
+  }
+  .pos-right {
+    .pos-right();
   }
 }

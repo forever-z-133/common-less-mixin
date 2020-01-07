@@ -10,13 +10,13 @@ npm i -S common-less-mixin
 
 ```less
 // xxx.less
-@import '~common-less-mixin';
+@import 'common-less-mixin';
 
 .someClass {
   .pos-top(); /* 顶部定位 */
   .flex-row(); /* flex 行且水平居中 */
   .padding-row(); /* 两边加上 15px 的内边距 */
-  .child-gap-right(); /* 子元素之间距离为 10px */
+  .child-gap-right(); /* 子元素之间距离为 5px */
   .border-bottom(); /* 底部毛细线 */
 }
 ```
@@ -36,40 +36,34 @@ npm i -S common-less-mixin
 
 ```less
 // 如果担心编译太多 mixin 会影响性能，可分别引入
-@import '~common-less-mixin/src/border.scss';
-@import '~common-less-mixin/src/flex.scss';
-@import '~common-less-mixin/src/form.scss';
-@import '~common-less-mixin/src/gap.scss';
-@import '~common-less-mixin/src/layout.scss';
-@import '~common-less-mixin/src/others.scss';
-@import '~common-less-mixin/src/position.scss';
-@import '~common-less-mixin/src/text.scss';
-@import '~common-less-mixin/src/utils.scss';
-@import '~common-less-mixin/src/var.scss';
+@import 'common-less-mixin/src/border.scss';
+@import 'common-less-mixin/src/flex.scss';
+@import 'common-less-mixin/src/form.scss';
+@import 'common-less-mixin/src/gap.scss';
+@import 'common-less-mixin/src/layout.scss';
+@import 'common-less-mixin/src/others.scss';
+@import 'common-less-mixin/src/position.scss';
+@import 'common-less-mixin/src/text.scss';
+@import 'common-less-mixin/src/utils.scss';
+@import 'common-less-mixin/src/var.scss';
 
 // 单个 css 则可以自己打包
-@import '~common-less-mixin/src/flex.scss';
+@import 'common-less-mixin/src/flex.scss';
 .flex-build();
 ```
 
 ## 2、如何自定义
 
-```less
-@px: 1rem;
-@import '~common-less-mixin';
-```
+_此功能还未实现，嘤嘤嘤_
 
 ```less
-// 也有打包好的 css 可供使用，但类名会有所不同
-@import 'common-less-mixin/dist.min.css';
-```
-```html
-<div class="post-top flex-row padding-row gap-right-5 border-bottom"></div>
+@px: 1rem;
+@import 'common-less-mixin';
 ```
 
 可配置项一览：
 ```less
-@px: 1rem;
+@px: 1px;
 
 @gap-xs: 5 * @px;
 @gap-sm: 10 * @px;
@@ -90,11 +84,11 @@ npm i -S common-less-mixin
 
 ```less
 /* border.scss */
-.border(@color);
-.border-top(@color);
-.border-left(@color);
-.border-right(@color);
-.border-bottom(@color);
+.border(@color, @width);
+.border-top(@color, @width);
+.border-left(@color, @width);
+.border-right(@color, @width);
+.border-bottom(@color, @width);
 .raduis(@rdius);
 .radius-round();
 .radius-circle();
@@ -144,17 +138,19 @@ npm i -S common-less-mixin
 .input-file();
 
 /* position.scss */
-.cover();
+.cover(@type);
 .fit-cover(@fit);
-.pos-center();
-.pos-top();
-.pos-bottom();
-.pos-left();
-.pos-right();
+.pos-center(@type);
+.pos-top(@type);
+.pos-bottom(@type);
+.pos-left(@type);
+.pos-right(@type);
 
+/* text.scss */
 .text-overflow(@line);
 .text-last-justify(@height);
 
+/* others.scss */
 .reset();
 .normal-list();
 .clearfix();
@@ -163,4 +159,5 @@ npm i -S common-less-mixin
 .ratio(@ratio);
 .image-ratio(@ratio, @fit);
 .seo-only();
+.pos-hide();
 ```

@@ -1,4 +1,12 @@
 /* 横向 flex */
+.flex-row-normal() {
+  display: flex;
+  align-items: center;
+}
+.flex-row(@child: ~'.grow') {
+  .flex-row-normal();
+  .flex-row-child(@child);
+}
 .flex-row-child(@child: ~'.grow') {
   & > @{child} {
     flex-grow: 1;
@@ -7,14 +15,6 @@
   & > :not(@{child}) {
     flex-shrink: 0;
   }
-}
-.flex-row-normal() {
-  display: flex;
-  align-items: center;
-}
-.flex-row(@child: ~'.grow') {
-  .flex-row-normal();
-  .flex-row-child(@child);
 }
 .flex-row-top() {
   align-items: flex-start;
@@ -45,14 +45,6 @@
 }
 
 /* 竖向 flex */
-.flex-col-child(@child: ~'.grow') {
-  & > @{child} {
-    flex-grow: 1;
-  }
-  & > :not(@{child}) {
-    flex-shrink: 0;
-  }
-}
 .flex-col-normal() {
   display: flex;
   flex-direction: column;
@@ -60,6 +52,14 @@
 .flex-col(@child: ~'.grow') {
   .flex-col-normal();
   .flex-col-child(@child);
+}
+.flex-col-child(@child: ~'.grow') {
+  & > @{child} {
+    flex-grow: 1;
+  }
+  & > :not(@{child}) {
+    flex-shrink: 0;
+  }
 }
 .flex-col-top() {
   justify-content: flex-start;
