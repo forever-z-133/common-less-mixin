@@ -26,11 +26,11 @@
   border-radius: @radius;
   overflow: @overflow;
 }
-.radius-circle() {
-  .radius(@radius-circle);
+.radius-circle(@overflow: hidden) {
+  .radius(@radius-circle, @overflow);
 }
-.radius-round() {
-  .radius(@radius-round);
+.radius-round(@overflow: hidden) {
+  .radius(@radius-round, @overflow);
 }
 
 /* border 编译 */

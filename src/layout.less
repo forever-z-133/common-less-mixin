@@ -1,19 +1,29 @@
 @import './others.less';
 
 /* inline-block 列表 */
-.inblock-row() {
+.inblock-row(@children: @inblock-row-children) {
   letter-spacing: -1em;
-  & > * {
-    display: inline-block;
-    letter-spacing: 0;
+  .loop(@children, 0);
+  .loop(@arr, @index: 0) when (@index < length(@arr)) {
+    @item: extract(@arr, @index + 1);
+    & > @{item} {
+      display: inline-block;
+      letter-spacing: 0;
+    }
+    .loop(@arr, @index + 1);
   }
 }
 
 /* float 列表 */
-.float-row() {
+.float-row(@children: @float-row-children) {
   .clearfix();
-  & > * {
-    float: left;
+  .loop(@children, 0);
+  .loop(@arr, @index: 0) when (@index < length(@arr)) {
+    @item: extract(@arr, @index + 1);
+    & > @{item} {
+      float: left;
+    }
+    .loop(@arr, @index + 1);
   }
 }
 

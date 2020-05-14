@@ -51,7 +51,7 @@
 .__ratioBefore(@ratio: 1) {
   &::before {
     content: '';
-    float: left;
+    display: block;
     padding-top: @ratio * 100%;
   }
 }
@@ -64,11 +64,16 @@
     clear: both;
   }
 }
-.image-ratio(@ratio: 1, @fit: cover) {
+.image-ratio(@ratio: 1, @fit: cover, @children: @image-ratio-children) {
   position: relative;
   .__ratioBefore(@ratio);
-  & > * {
-    .fit-cover(@fit);
+  .loop(@children, 0);
+  .loop(@arr, @index: 0) when (@index < length(@arr)) {
+    @item: extract(@arr, @index + 1);
+    & > @{item} {
+      .fit-cover(@fit);
+    }
+    .loop(@arr, @index + 1);
   }
 }
 
@@ -82,13 +87,6 @@
   padding: 0;
   position: absolute !important;
   width: 1px;
-}
-
-/* 隐藏但保持渲染，适用于 canvas 等 */
-/* 但需注意该隐藏元素的高度，父级最好有 overflow */
-.pos-hide() {
-  position: absolute;
-  left: -9999em;
 }
 
 .others-build() {

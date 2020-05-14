@@ -32,14 +32,24 @@
 }
 
 /* 子级间隙 */
-.child-gap-right(@n: @child-gap) {
-  & > :not(:last-child) {
-    margin-right: @n;
+.child-gap-right(@n: @child-gap, @children: @child-gap-children, @not: @child-gap-children-not) {
+  .loop(@children, 0);
+  .loop(@arr, @index: 0) when (@index < length(@arr)) {
+    @item: extract(@arr, @index + 1);
+    .child-map({
+      margin-right: @n;
+    }, @item, @not);
+    .loop(@arr, @index + 1);
   }
 }
-.child-gap-bottom(@n: @child-gap) {
-  & > :not(:last-child) {
-    margin-bottom: @n;
+.child-gap-bottom(@n: @child-gap, @children: @child-gap-children, @not: @child-gap-children-not) {
+  .loop(@children, 0);
+  .loop(@arr, @index: 0) when (@index < length(@arr)) {
+    @item: extract(@arr, @index + 1);
+    .child-map({
+      margin-bottom: @n;
+    }, @item, @not);
+    .loop(@arr, @index + 1);
   }
 }
 
@@ -71,8 +81,14 @@
 
   .child-gap-loop(@dir: right, @n, @i: 1) when (@i <= @n) {
     @gap: @i * 5;
-    .gap-@{dir}-@{gap} > :not(:last-of-type) {
-      margin-@{dir}: @gap * @px;
+    .gap-@{dir}-@{gap} {
+      .if(@_dir) when (@_dir = right) {
+        .child-gap-right(@gap * @px);
+      }
+      .if(@_dir) when (@_dir = bottom) {
+        .child-gap-bottom(@gap * @px);
+      }
+      .if(@dir);
     }
     .child-gap-loop(@dir, @n, (@i + 1));
   }

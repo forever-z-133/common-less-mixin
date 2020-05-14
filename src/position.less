@@ -45,6 +45,35 @@
   bottom: 0;
 }
 
+// 贴角
+.pos-top-left(@type: absolute, @offset: 0) {
+  position: @type;
+  top: @offset;
+  left: @offset;
+}
+.pos-top-right(@type: absolute, @offset: 0) {
+  position: @type;
+  top: @offset;
+  right: @offset;
+}
+.pos-bottom-left(@type: absolute, @offset: 0) {
+  position: @type;
+  bottom: @offset;
+  left: @offset;
+}
+.pos-bottom-right(@type: absolute, @offset: 0) {
+  position: @type;
+  bottom: @offset;
+  right: @offset;
+}
+
+/* 隐藏但保持渲染，适用于 canvas 等 */
+/* 但需注意该隐藏元素的高度，父级最好有 overflow */
+.pos-hide() {
+  position: absolute;
+  left: -9999em;
+}
+
 .position-build() {
   .relative {
     position: relative;
@@ -78,5 +107,23 @@
   }
   .pos-right {
     .pos-right();
+  }
+  .fixed-center {
+    .pos-center(fixed);
+  }
+  .fixed-top {
+    .pos-top(fixed);
+  }
+  .fixed-bottom {
+    .pos-bottom(fixed);
+  }
+  .fixed-left {
+    .pos-left(fixed);
+  }
+  .fixed-right {
+    .pos-right(fixed);
+  }
+  .pos-hide {
+    .pos-hide();
   }
 }
