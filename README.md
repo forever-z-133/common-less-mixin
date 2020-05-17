@@ -83,6 +83,7 @@ npm i -D common-less-mixin
 @border-width: 1PX;
 @border-color: #e8e8e8;
 
+// 当在小程序上使用时不支持 > :not() 和 *，故而可通过以下配置改为 view
 @flex-grow-children: ~'.grow';
 @flex-shrink-children: ~'';
 @flex-column-grow-children: ~'.item', ~'.col';

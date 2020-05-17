@@ -15,10 +15,15 @@
       flex-grow: 1;
       overflow: hidden;
     }
-    & > :not(@{item}) {
-      flex-shrink: 0;
-    }
+    .loopMore(@flex-shrink-children, 0, @item);
     .loop(@arr, @index + 1);
+  }
+  .loopMore(@arr, @index: 0, @not) when (@index < length(@arr)) {
+    @item: extract(@arr, @index + 1);
+    .child-map({
+      flex-shrink: 0;
+    }, @item, @not);
+    .loopMore(@arr, @index + 1, @not);
   }
 }
 .flex-row-top() {
@@ -65,10 +70,15 @@
     & > @{item} {
       flex-grow: 1;
     }
-    & > :not(@{item}) {
-      flex-shrink: 0;
-    }
+    .loopMore(@flex-shrink-children, 0, @item);
     .loop(@arr, @index + 1);
+  }
+  .loopMore(@arr, @index: 0, @not) when (@index < length(@arr)) {
+    @item: extract(@arr, @index + 1);
+    .child-map({
+      flex-shrink: 0;
+    }, @item, @not);
+    .loopMore(@arr, @index + 1, @not);
   }
 }
 .flex-col-top() {
