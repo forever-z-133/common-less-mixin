@@ -1,4 +1,3 @@
-/* 定位 */
 .cover(@type: absolute) {
   position: @type;
   top: 0;
@@ -45,7 +44,6 @@
   bottom: 0;
 }
 
-// 贴角
 .pos-top-left(@type: absolute, @offset: 0) {
   position: @type;
   top: @offset;
@@ -67,8 +65,6 @@
   right: @offset;
 }
 
-/* 隐藏但保持渲染，适用于 canvas 等 */
-/* 但需注意该隐藏元素的高度，父级最好有 overflow */
 .pos-hide() {
   position: absolute;
   left: -9999em;

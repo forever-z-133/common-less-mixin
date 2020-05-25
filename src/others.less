@@ -1,6 +1,5 @@
 @import './position.less';
 
-/* 重置 a input 等的样式 */
 .reset() {
   font: inherit;
   color: inherit;
@@ -8,13 +7,11 @@
   border: none;
   padding:0 0;
   text-decoration: none;
-  // 针对小程序按钮加个处理
   &::after {
     display: none;
   }
 }
 
-/* 清除 ul 样式 */
 .normal-list() {
   margin-top: 0;
   margin-bottom: 0;
@@ -22,7 +19,6 @@
   list-style: none;
 }
 
-/* 清楚浮动 */
 .clearfix() {
   &::after {
     display: block;
@@ -31,14 +27,12 @@
   }
 }
 
-/* 搞个方盒子 */
 .rect-box(@n: 1em) {
   width: @n;
   height: @n;
   display: block;
 }
 
-/* 禁用 */
 .disabled(@grey: false) {
   pointer-events: none;
   user-select: none;
@@ -47,7 +41,6 @@
   filter: grayscale(1);
 }
 
-/* 等比例盒子，两套方案是同样的效果，但 img-ratio 会让子级定位 */
 .__ratioBefore(@ratio: 1) {
   &::before {
     content: '';
@@ -77,7 +70,6 @@
   }
 }
 
-/* 有内容，但不影响布局 */
 .seo-only() {
   border: 0;
   clip: rect(0 0 0 0);
@@ -116,8 +108,5 @@
   }
   .seo-only {
     .seo-only();
-  }
-  .pos-hide {
-    .pos-hide();
   }
 }

@@ -1,6 +1,5 @@
 @import './others.less';
 
-/* inline-block 列表 */
 .inblock-row(@children: @inblock-row-children) {
   letter-spacing: -1em;
   .loop(@children, 0);
@@ -14,7 +13,6 @@
   }
 }
 
-/* float 列表 */
 .float-row(@children: @float-row-children) {
   .clearfix();
   .loop(@children, 0);
@@ -27,7 +25,6 @@
   }
 }
 
-/* 滚动容器 */
 .scroller() {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
@@ -49,7 +46,6 @@
   .scroller(y);
 }
 
-/* layout 编译 */
 .layout-build() {
   .block {
     display: block;

@@ -91,7 +91,7 @@ npm i -D common-less-mixin
 @inblock-row-children: ~'*';
 @child-gap-children: ~'';
 @child-gap-children-not: ~':last-child';
-@input-file-child: ~'[type="file"]';
+@input-file-children: ~'[type="file"]';
 @image-ratio-children: ~'*';
 ```
 
@@ -104,9 +104,9 @@ npm i -D common-less-mixin
 .border-left(@color, @width);
 .border-right(@color, @width);
 .border-bottom(@color, @width);
-.raduis(@rdius);
-.radius-round();
-.radius-circle();
+.raduis(@rdius, @overflow);
+.radius-round(@overflow);
+.radius-circle(@overflow);
 
 /* gap.scss */
 .padding-row(@gap);
@@ -119,7 +119,7 @@ npm i -D common-less-mixin
 
 /* flex.scss */
 .flex-row-normal();
-.flex-row(@child);
+.flex-row(@children);
 .flex-row-top();
 .flex-row-middle();
 .flex-row-bottom();
@@ -131,7 +131,7 @@ npm i -D common-less-mixin
 .flex-row-wrap();
 
 .flex-col-normal();
-.flex-col(@child);
+.flex-col(@children);
 .flex-col-top();
 .flex-col-middle();
 .flex-col-bottom();
@@ -141,6 +141,7 @@ npm i -D common-less-mixin
 .flex-col-right();
 
 .flex-center();
+.flex-column(@column, @children);
 
 /* layout.scss */
 .inblock-row();
@@ -150,7 +151,8 @@ npm i -D common-less-mixin
 .scroller-y();
 
 /* form.scss */
-.input-file();
+.input-file(@children);
+.pure();
 
 /* position.scss */
 .cover(@type);
@@ -160,6 +162,11 @@ npm i -D common-less-mixin
 .pos-bottom(@type);
 .pos-left(@type);
 .pos-right(@type);
+.pos-top-left(@type, @offset);
+.pos-top-right(@type, @offset);
+.pos-bottom-left(@type, @offset);
+.pos-bottom-right(@type, @offset);
+.pos-hide();
 
 /* text.scss */
 .text-overflow(@line);
@@ -169,10 +176,9 @@ npm i -D common-less-mixin
 .reset();
 .normal-list();
 .clearfix();
-.rect-box(@width);
-.disabled();
+.rect-box(@size);
+.disabled(@grey);
 .ratio(@ratio);
-.image-ratio(@ratio, @fit);
+.image-ratio(@ratio, @fit, @children);
 .seo-only();
-.pos-hide();
 ```

@@ -1,20 +1,22 @@
-/* 自定义上传按钮，必须用 label 包裹并带上此类 */
-.input-file(@child: @input-file-child) {
+.input-file(@children: @input-file-children) {
   position: relative;
   vertical-align: middle;
   cursor: pointer;
-  & > @{child} {
-    position: absolute;
-    left: -999em;
+  .loop(@children, 0);
+  .loop(@arr, @index: 0) when (@index < length(@arr)) {
+    @item: extract(@arr, @index + 1);
+    & > @{item} {
+      position: absolute;
+      left: -999em;
+    }
+    .loop(@arr, @index + 1);
   }
 }
 
-/* 清除 button input 等原本样式 */
 .pure() {
   .reset();
 }
 
-/* form 编译 */
 .form-build() {
   label.input-file {
     .input-file();
